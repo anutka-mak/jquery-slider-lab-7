@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="slider"></div>
+
+<script>
+    $( "#slider" ).slider();
+</script>
+
+<div id="image-slider" class="slider">
+    <img src="https://slukh.media/wp-content/uploads/2022/10/Largebts.jpg" alt="Image 1">
+    <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OP3VXEFN5ZGXPJQTY3PW63XLI4.png" alt="Image 2">
+    <img src="https://snob.ru/indoc/original_images/8e8/1.jpg" alt="Image 3">
+</div>
+
+<script>
+    $(document).ready(function() {
+        let currentSlide = 0;
+        const slides = $('#image-slider img');
+        const numberOfSlides = slides.length;
+
+        // Показуємо перше зображення
+        slides.eq(currentSlide).show();
+
+        // Функція для зміни слайдів
+        function changeSlide() {
+            slides.eq(currentSlide).fadeOut();
+            currentSlide = (currentSlide + 1) % numberOfSlides;
+            slides.eq(currentSlide).fadeIn();
+        }
+
+        // Зміна слайдів кожні 3 секунди
+        setInterval(changeSlide, 3000);
+    });
+
+</script>
+</body>
+</html>
